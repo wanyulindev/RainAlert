@@ -1,4 +1,8 @@
 import requests
+from twilio.rest import Client
+
+account_sid = 'AC6ce642cdb9e2cf3bd2d3fd03564dcf9a'
+auth_token = '51d1b7adecb7bf0ae5c7bb85ed282d6b'
 
 MY_LAT = 34.052235
 MY_LNG = -118.243683
@@ -46,7 +50,17 @@ for item in within_12hours:
         will_rain = True    # Let's write it as only once, so we will bring umbrella next 12 hrs.
 
 if will_rain:
-    print("Bring an umbrella")
+    # print("Bring an umbrella")
+    # Using Twilio:
+    client = Client(account_sid, auth_token)
+    message = client.messages.create(
+        from_='+18444821071',
+        body='It gonna rain today! Bring an umbrella :) 🙂☔️🌧',
+        to='+16268736132'
+    )
+    print(message.status)
+    print(message.sid)
+
 
 
 
