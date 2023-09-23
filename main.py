@@ -1,13 +1,14 @@
 import requests
 from twilio.rest import Client
+import os
 
 account_sid = 'AC6ce642cdb9e2cf3bd2d3fd03564dcf9a'
-auth_token = '51d1b7adecb7bf0ae5c7bb85ed282d6b'
+auth_token = os.environ.get("AUTH_TOKEN")
 
 MY_LAT = 34.052235
 MY_LNG = -118.243683
 exclude_data = "current,minutely,daily"
-api_key = "6274c1fdf81d17d702df0440ebd85f4b"
+api_key = os.environ.get("API_KEY")
 # Let's just write the OWM address here to make it even much clear:
 # And down below are all working free:
 # OWM_Endpoint = "https://api.openweathermap.org/data/2.5/weather"  # current weather
@@ -63,5 +64,6 @@ if will_rain:
 
 
 # commit test
+# test .env file
 
 
